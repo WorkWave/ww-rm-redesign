@@ -5,6 +5,8 @@ import { Grid, Typography, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
+import { ResourceLink } from './ResourceBarPieces/ResourceLink';
+
 const useStyles = makeStyles((theme) => ({
 	bar: {
 		background: theme.white,
@@ -14,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: '14px',
 		fontWeight: 600,
 		color: theme.workwaveBlue,
-		margin: '0 .75rem',
+		marginRight: '1rem',
 		transition: 'all .5s',
 		'&:hover': {
 			color: '#2F7FC1',
@@ -22,7 +24,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export const ResourceBar = ({ link, sales, service }) => {
+export const ResourceBar = ({
+	mktplcLink,
+	product,
+	company,
+	sales,
+	support,
+	partner,
+}) => {
 	const classes = useStyles();
 	const sm = useMediaQuery('(max-width: 630px)');
 
@@ -34,23 +43,27 @@ export const ResourceBar = ({ link, sales, service }) => {
 					direction={sm ? 'column' : 'row'}
 					justifyContent={sm ? 'center' : 'flex-end'}
 					alignItems='center'>
+					<ResourceLink items={product} />
+					<ResourceLink items={company} />
+					<ResourceLink items={sales} />
+					<ResourceLink items={support} />
+					<a
+						href={partner?.slug?.current}
+						target='_blank'
+						rel='noopener'
+						style={{ textDecoration: 'none' }}>
+						<Typography className={classes.numbers}>
+							{partner?.title}
+						</Typography>
+					</a>
+
 					<a
 						href='https://marketplace.workwave.com'
 						target='_blank'
 						rel='noopener'
 						style={{ textDecoration: 'none' }}>
 						<Typography className={classes.numbers}>
-							<FontAwesomeIcon icon={['fad', 'shopping-cart']} /> {link}
-						</Typography>
-					</a>
-					<a href='tel: 866-794-1658' style={{ textDecoration: 'none' }}>
-						<Typography className={classes.numbers}>
-							<FontAwesomeIcon icon={['fad', 'phone-alt']} /> Sales: {sales}
-						</Typography>
-					</a>
-					<a href='tel:  800-762-0301' style={{ textDecoration: 'none' }}>
-						<Typography className={classes.numbers}>
-							<FontAwesomeIcon icon={['fad', 'phone-alt']} /> Support: {service}
+							<FontAwesomeIcon icon={['fad', 'shopping-cart']} /> {mktplcLink}
 						</Typography>
 					</a>
 				</Grid>

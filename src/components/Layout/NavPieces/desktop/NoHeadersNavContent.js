@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 import { NavCallout } from './NavItems/NavCallout';
 import { FaNavItems } from './NavItems/FaNavItems';
 
-export const CompanyNavContent = ({
+export const NoHeadersNavContent = ({
 	links,
 	calloutIcon,
 	calloutTitle,

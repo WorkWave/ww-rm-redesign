@@ -20,9 +20,41 @@ export const Nav = () => {
 					_rawContent
 				}
 				resourceBar {
+					productLinks {
+						type
+						title
+						slug {
+							current
+						}
+					}
+					companyLinks {
+						type
+						title
+						slug {
+							current
+						}
+					}
+					salesLinks {
+						type
+						title
+						slug {
+							current
+						}
+					}
+					supportLinks {
+						type
+						title
+						slug {
+							current
+						}
+					}
+					partnerNavLink {
+						title
+						slug {
+							current
+						}
+					}
 					mktplcLink
-					salesNumber
-					serviceNumber
 				}
 				wwNavLogo {
 					asset {
@@ -105,9 +137,14 @@ export const Nav = () => {
 			<PromotionBar promotion={nav.promotionBar} />
 			{!med && (
 				<ResourceBar
-					link={nav.resourceBar.mktplcLink}
+					mktplcLink={nav.resourceBar.mktplcLink}
 					sales={nav.resourceBar.salesNumber}
 					service={nav.resourceBar.serviceNumber}
+					product={nav.resourceBar.productLinks}
+					company={nav.resourceBar.companyLinks}
+					sales={nav.resourceBar.salesLinks}
+					support={nav.resourceBar.supportLinks}
+					partner={nav.resourceBar.partnerNavLink}
 				/>
 			)}
 
