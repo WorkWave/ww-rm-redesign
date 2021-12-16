@@ -23,11 +23,13 @@ export const CompanyNavContent = ({
 				</Grid>
 			</Grid>
 
-			<NavCallout
-				calloutIcon={calloutIcon}
-				calloutTitle={calloutTitle}
-				calloutContent={calloutContent}
-			/>
+			{calloutTitle && (
+				<NavCallout
+					calloutIcon={calloutIcon}
+					calloutTitle={calloutTitle}
+					calloutContent={calloutContent}
+				/>
+			)}
 		</Grid>
 	);
 };

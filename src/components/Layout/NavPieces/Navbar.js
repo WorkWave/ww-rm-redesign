@@ -30,7 +30,24 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'center',
 	},
-	partners: {
+	pricing: {
+		color: theme.workwaveBlue,
+		cursor: 'pointer',
+		height: '64px',
+		cursor: 'pointer',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginRight: '16px',
+		// marginTop: '12px',
+		textDecoration: 'none',
+		position: 'relative',
+		transition: 'all .5s',
+		'&:hover': {
+			color: '#2F7FC1',
+		},
+	},
+	login: {
 		color: theme.workwaveBlue,
 		cursor: 'pointer',
 		marginRight: '8px',
@@ -106,40 +123,38 @@ export const Navbar = ({ nav, marketplace, salesNumber, serviceNumber }) => {
 								) : (
 									<>
 										<NavLink
+											header={nav.routingGpsLinks[0].type}
+											links={nav.routingGpsLinks}
+										/>
+										<NavLink
 											header={nav.industryLinks[0].type}
 											links={nav.industryLinks}
 											calloutIcon={nav.industryCalloutFaIcon}
 											calloutTitle={nav.industryCalloutTitle}
 											calloutContent={nav._rawIndustryCalloutContent}
 										/>
+
 										<NavLink
-											header={nav.productLinks[0].type}
-											links={nav.productLinks}
-											calloutIcon={nav.productCalloutIcon}
-											calloutTitle={nav.productCalloutTitle}
-											calloutContent={nav._rawProductCalloutContent}
+											header={nav.rmSolutionsLinks[0].type}
+											links={nav.rmSolutionsLinks}
 										/>
+										<Typography>
+											<Link
+												to={nav.pricingNavLink.slug.current}
+												className={classes.pricing}>
+												{nav.pricingNavLink.title}
+											</Link>
+										</Typography>
 										<NavLink
-											header={nav.companyLinks[0].type}
-											links={nav.companyLinks}
-											calloutIcon={nav.companyCalloutIcon}
-											calloutTitle={nav.companyCalloutTitle}
-											calloutContent={nav._rawCompanyCalloutContent}
+											header={nav.resourcesLinks[0].type}
+											contentHeader={nav.resourcesHeader}
+											links={nav.resourcesLinks}
 										/>
-										<NavLink
-											header={nav.salesLinks[0].type}
-											contentHeader={nav.salesHeader}
-											links={nav.salesLinks}
-											handleModalClick={handleModalClick}
-										/>
-										<NavLink
-											header={nav.supportLinks[0].type}
-											contentHeader={nav.supportHeader}
-											links={nav.supportLinks}
-										/>
-										<Typography style={{}}>
-											<Link to='/partners' className={classes.partners}>
-												{nav.partnerNavLink.title}
+										<Typography>
+											<Link
+												to={nav.loginNavLink.slug.current}
+												className={classes.login}>
+												{nav.loginNavLink.title}
 											</Link>
 										</Typography>
 										<Button

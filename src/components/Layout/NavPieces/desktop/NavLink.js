@@ -109,22 +109,6 @@ export const NavLink = ({
 					{
 						{
 							industries: (
-								<IndustryNavContent
-									links={links}
-									calloutIcon={calloutIcon}
-									calloutTitle={calloutTitle}
-									calloutContent={calloutContent}
-								/>
-							),
-							products: (
-								<ProductNavContent
-									links={links}
-									calloutIcon={calloutIcon}
-									calloutTitle={calloutTitle}
-									calloutContent={calloutContent}
-								/>
-							),
-							company: (
 								<CompanyNavContent
 									links={links}
 									calloutIcon={calloutIcon}
@@ -132,16 +116,31 @@ export const NavLink = ({
 									calloutContent={calloutContent}
 								/>
 							),
-							sales: (
-								<SalesNavContent links={links} contentHeader={contentHeader} />
-							),
-							support: (
-								<SupportNavContent
+							solutions: (
+								<CompanyNavContent
 									links={links}
-									contentHeader={contentHeader}
+									calloutIcon={calloutIcon}
+									calloutTitle={calloutTitle}
+									calloutContent={calloutContent}
 								/>
 							),
-						}[header]
+							routing: (
+								<CompanyNavContent
+									links={links}
+									calloutIcon={calloutIcon}
+									calloutTitle={calloutTitle}
+									calloutContent={calloutContent}
+								/>
+							),
+							resources: (
+								<CompanyNavContent
+									links={links}
+									calloutIcon={calloutIcon}
+									calloutTitle={calloutTitle}
+									calloutContent={calloutContent}
+								/>
+							),
+						}[header.substr(0, header.indexOf(' ')) || header]
 					}
 				</Container>
 			</HoverMenu>

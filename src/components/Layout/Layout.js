@@ -49,6 +49,15 @@ import {
 	faBuilding,
 	faHeadset,
 	faHandshake,
+	faCode,
+	faLocationCircle,
+	faMailbox,
+	faWineBottle,
+	faUtensils,
+	faGasPump,
+	faInfoSquare,
+	faBook,
+	faFileChartPie,
 } from '@fortawesome/pro-duotone-svg-icons';
 import {
 	faFacebookSquare,
@@ -118,7 +127,16 @@ library.add(
 	faCubes,
 	faBuilding,
 	faHeadset,
-	faHandshake
+	faHandshake,
+	faCode,
+	faLocationCircle,
+	faMailbox,
+	faWineBottle,
+	faUtensils,
+	faGasPump,
+	faInfoSquare,
+	faBook,
+	faFileChartPie
 );
 
 export const Layout = ({ children }) => {

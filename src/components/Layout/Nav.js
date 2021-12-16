@@ -13,7 +13,7 @@ export const Nav = () => {
 
 	const { nav } = useStaticQuery(graphql`
 		{
-			nav: sanityNav {
+			nav: sanityRouteManagerNav {
 				title
 				promotionBar {
 					_type
@@ -30,6 +30,17 @@ export const Nav = () => {
 						url
 					}
 				}
+				routingGpsMobileFaIcon
+				routingGpsLinks {
+					title
+					type
+					faIcon
+					name
+					category
+					slug {
+						current
+					}
+				}
 				industryLinks {
 					title
 					type
@@ -40,26 +51,26 @@ export const Nav = () => {
 						current
 					}
 				}
-				industryMobileFaIcon
 				industryCalloutFaIcon
 				industryCalloutTitle
 				_rawIndustryCalloutContent
-				productLinks {
+				rmSolutionsLinks {
 					title
 					type
-					mainName
-					secondaryName
+					faIcon
+					name
 					category
-					description
 					slug {
 						current
 					}
 				}
-				productMobileFaIcon
-				productCalloutIcon
-				productCalloutTitle
-				_rawProductCalloutContent
-				companyLinks {
+				pricingNavLink {
+					title
+					slug {
+						current
+					}
+				}
+				resourcesLinks {
 					title
 					type
 					faIcon
@@ -68,36 +79,16 @@ export const Nav = () => {
 						current
 					}
 				}
-				companyMobileFaIcon
-				companyCalloutIcon
-				companyCalloutTitle
-				_rawCompanyCalloutContent
-				salesMobileFaIcon
-				salesHeader
-				salesLinks {
+				resourcesLinks {
 					title
 					type
 					faIcon
 					name
-					description
 					slug {
 						current
 					}
 				}
-				supportMobileFaIcon
-				supportHeader
-				supportLinks {
-					title
-					type
-					faIcon
-					name
-					description
-					slug {
-						current
-					}
-				}
-				partnerMobileFaIcon
-				partnerNavLink {
+				loginNavLink {
 					title
 					slug {
 						current

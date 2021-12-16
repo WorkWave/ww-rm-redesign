@@ -27,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
 			padding: '10px 10px',
 		},
 	},
-	partnerContainer: {
+	standAloneContainer: {
 		padding: '15px 0',
 		borderBottom: `1px ${theme.white} solid`,
 	},
-	partners: {
+	standAlone: {
 		textDecoration: 'none',
 		color: theme.white,
 	},
@@ -110,41 +110,59 @@ export const MobileNav = ({ nav, handleModalClick, mktplcLink }) => {
 				{...bindPopper(popupState)}>
 				<div>
 					<MobileNavLink
+						header={nav.routingGpsLinks[0].type}
+						links={nav.routingGpsLinks}
+						icon={nav.routingGpsMobileFaIcon}
+						closeNav={closeNav}
+					/>
+					<MobileNavLink
 						header={nav.industryLinks[0].type}
 						links={nav.industryLinks}
 						icon={nav.industryMobileFaIcon}
 						closeNav={closeNav}
 					/>
 					<MobileNavLink
-						header={nav.productLinks[0].type}
-						links={nav.productLinks}
-						icon={nav.productMobileFaIcon}
+						header={nav.rmSolutionsLinks[0].type}
+						links={nav.rmSolutionsLinks}
+						icon={nav.rmSolutionsMobileFaIcon}
 						closeNav={closeNav}
 					/>
-					<MobileNavLink
-						header={nav.companyLinks[0].type}
-						links={nav.companyLinks}
-						icon={nav.companyMobileFaIcon}
-						closeNav={closeNav}
-					/>
-					<MobileNavLink
-						header={nav.salesLinks[0].type}
-						links={nav.salesLinks}
-						icon={nav.salesMobileFaIcon}
-						closeNav={closeNav}
-					/>
-					<MobileNavLink
-						header={nav.supportLinks[0].type}
-						links={nav.supportLinks}
-						icon={nav.supportMobileFaIcon}
-						closeNav={closeNav}
-					/>
-					<Link to='/partners' className={classes.partners}>
+					<Link
+						to={nav.pricingNavLink.slug.current}
+						className={classes.standAlone}>
 						<Grid
 							container
 							alignItems='center'
 							onMouseUp={(e) => closeNav(e)}
-							className={classes.partnerContainer}>
+							className={classes.standAloneContainer}>
+							<FontAwesomeIcon
+								icon={['fad', nav.pricingMobileFaIcon]}
+								style={{
+									marginRight: '.5rem',
+									color: 'white',
+									marginLeft: '1rem',
+									fontSize: '1.25rem',
+								}}
+							/>
+							<Typography style={{ fontSize: '1.25rem', fontWeight: 500 }}>
+								{nav.pricingNavLink.title}
+							</Typography>
+						</Grid>
+					</Link>
+					<MobileNavLink
+						header={nav.resourcesLinks[0].type}
+						links={nav.resourcesLinks}
+						icon={nav.resourcesMobileFaIcon}
+						closeNav={closeNav}
+					/>
+					<Link
+						to={nav.loginNavLink.slug.current}
+						className={classes.standAlone}>
+						<Grid
+							container
+							alignItems='center'
+							onMouseUp={(e) => closeNav(e)}
+							className={classes.standAloneContainer}>
 							<FontAwesomeIcon
 								icon={['fad', nav.partnerMobileFaIcon]}
 								style={{
@@ -155,7 +173,7 @@ export const MobileNav = ({ nav, handleModalClick, mktplcLink }) => {
 								}}
 							/>
 							<Typography style={{ fontSize: '1.25rem', fontWeight: 500 }}>
-								{nav.partnerNavLink.title}
+								{nav.loginNavLink.title}
 							</Typography>
 						</Grid>
 					</Link>
@@ -163,12 +181,12 @@ export const MobileNav = ({ nav, handleModalClick, mktplcLink }) => {
 						href='https://marketplace.workwave.com'
 						target='_blank'
 						rel='noopener'
-						className={classes.partners}>
+						className={classes.standAlone}>
 						<Grid
 							container
 							alignItems='center'
 							onMouseUp={(e) => closeNav(e)}
-							className={classes.partnerContainer}>
+							className={classes.stadnAloneContainer}>
 							<Typography style={{ fontSize: '1.25rem', fontWeight: 500 }}>
 								<FontAwesomeIcon
 									icon={['fad', 'shopping-cart']}
