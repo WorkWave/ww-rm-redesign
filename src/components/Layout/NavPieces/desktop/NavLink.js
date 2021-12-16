@@ -14,7 +14,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { ProductNavContent } from './ProductNavContent';
 import { IndustryNavContent } from './IndustryNavContent';
-import { CompanyNavContent } from './CompanyNavContent';
+import { NoHeadersNavContent } from './NoHeadersNavContent';
 import { SalesNavContent } from './SalesNavContent';
 import { SupportNavContent } from './SupportNavContent';
 
@@ -109,7 +109,7 @@ export const NavLink = ({
 					{
 						{
 							industries: (
-								<CompanyNavContent
+								<NoHeadersNavContent
 									links={links}
 									calloutIcon={calloutIcon}
 									calloutTitle={calloutTitle}
@@ -117,7 +117,7 @@ export const NavLink = ({
 								/>
 							),
 							solutions: (
-								<CompanyNavContent
+								<NoHeadersNavContent
 									links={links}
 									calloutIcon={calloutIcon}
 									calloutTitle={calloutTitle}
@@ -125,7 +125,7 @@ export const NavLink = ({
 								/>
 							),
 							routing: (
-								<CompanyNavContent
+								<NoHeadersNavContent
 									links={links}
 									calloutIcon={calloutIcon}
 									calloutTitle={calloutTitle}
@@ -133,7 +133,7 @@ export const NavLink = ({
 								/>
 							),
 							resources: (
-								<CompanyNavContent
+								<NoHeadersNavContent
 									links={links}
 									calloutIcon={calloutIcon}
 									calloutTitle={calloutTitle}
