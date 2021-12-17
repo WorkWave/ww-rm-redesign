@@ -13,6 +13,7 @@ import { TestimonialLogos } from '../components/Testimonials/TestimonialLogos';
 import { TestimonialCarousel } from '../components/Testimonials/TestimonialCarousel';
 import { ContactForm } from '../components/ContactForm';
 import { ContactFormModal } from '../components/ContactForm/ContactFormModal';
+import { CaseStudy } from '../components/RouteManager/Home/CaseStudy';
 import FormModalContext from '../context/FormModalContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,17 +29,17 @@ const useStyles = makeStyles((theme) => ({
 	// },
 	formBackground: {
 		background: theme.workwaveBlue,
-		paddingBottom: '2rem',
-		marginTop: '-7rem',
-		[theme.breakpoints.down('md')]: {
-			marginTop: '-9rem',
-		},
-		[theme.breakpoints.down('sm')]: {
-			marginTop: '-10rem',
-		},
-		[theme.breakpoints.down('xs')]: {
-			marginTop: '-12rem',
-		},
+		paddingBottom: '8rem',
+		// marginTop: '-7rem',
+		// [theme.breakpoints.down('md')]: {
+		// 	marginTop: '-9rem',
+		// },
+		// [theme.breakpoints.down('sm')]: {
+		// 	marginTop: '-10rem',
+		// },
+		// [theme.breakpoints.down('xs')]: {
+		// 	marginTop: '-12rem',
+		// },
 	},
 }));
 
@@ -144,7 +145,33 @@ const IndexPage = ({ data }) => {
 							</Grid>
 						</>
 					)}
+					<CaseStudy />
 				</Container>
+				<div className={classes.formBackground}>
+					<MemoizedForm
+						baseUrl='//app-sj02.marketo.com'
+						munchkinId='343-MGE-042'
+						formId={routeManager.marketoId}
+						contactForm={routeManager.contactForm}
+						privacy
+						modal={false}
+						// type='product'
+						// slug={addon.slug.current}
+						open={formModalOpen}
+						callback={callback}
+					/>
+				</div>
+				{formModalOpen && (
+					<MemoizedModal
+						open={formModalOpen}
+						toggleOpen={setFormModalOpen}
+						baseUrl='//app-sj02.marketo.com'
+						munchkinId='343-MGE-042'
+						formId={routeManager.marketoId}
+						contactForm={routeManager.contactForm}
+						callback={callback}
+					/>
+				)}
 			</div>
 		</>
 	);

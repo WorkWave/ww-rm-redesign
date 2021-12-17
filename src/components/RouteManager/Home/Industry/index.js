@@ -14,7 +14,7 @@ export const Industry = ({ title, industriesBlurbs }) => {
 				style={{
 					background: '#F4F8FE',
 					marginTop: '-1rem',
-					marginBottom: '-2rem',
+					marginBottom: '-8rem',
 					paddingBottom: '6rem',
 				}}>
 				<Container>
