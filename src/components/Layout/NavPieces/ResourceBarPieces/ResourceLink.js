@@ -12,6 +12,12 @@ import {
 } from 'material-ui-popup-state/hooks';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
+import { NoHeadersNavContent } from '../desktop/NoHeadersNavContent';
+import { ProductNavContent } from '../desktop/ProductNavContent';
+import { IndustryNavContent } from '../desktop/IndustryNavContent';
+import { SalesNavContent } from '../desktop/SalesNavContent';
+import { SupportNavContent } from '../desktop/SupportNavContent';
+
 const useStyles = makeStyles((theme) => ({
 	// options: {
 	// 	position: 'relative',
@@ -41,15 +47,15 @@ const useStyles = makeStyles((theme) => ({
 		height: 'auto',
 		transition: 'all .5s ease',
 	},
-	// popoverPaper: {
-	// 	maxHeight: 'none',
-	// 	width: '100%',
-	// 	boxShadow: '0px 4px 4px rgba(9, 7, 37, 0.05)',
-	// 	paddingTop: '1rem',
-	// 	// marginTop: '-.5rem',
-	// 	// background:
-	// 	// 	'linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(236,236,238,1) 100%)',
-	// },
+	popoverPaper: {
+		maxHeight: 'none',
+		width: '100%',
+		boxShadow: '0px 4px 4px rgba(9, 7, 37, 0.05)',
+		paddingTop: '2rem',
+		// marginTop: '-.5rem',
+		// background:
+		// 	'linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(236,236,238,1) 100%)',
+	},
 	linkContainer: {
 		// height: '64px',
 		cursor: 'pointer',
@@ -59,7 +65,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export const ResourceLink = ({ items }) => {
+export const ResourceLink = ({
+	header,
+	links,
+	calloutIcon,
+	calloutTitle,
+	calloutContent,
+	contentHeader,
+}) => {
 	const classes = useStyles();
 	const popupState = usePopupState({
 		variant: 'popover',
@@ -77,13 +90,13 @@ export const ResourceLink = ({ items }) => {
 				{...bindHover(popupState)}>
 				<a
 					className={classes.link}
-					href={`https://www.workwave.com/${items[0].type}`}
+					href={`https://www.workwave.com/${header}`}
 					target='_blank'
 					rel='noopener'>
 					<Typography
 						className={classes.link}
 						style={{ color: isOpen ? '#2F7FC1' : '#002D5C' }}>
-						{items[0].type[0].toUpperCase() + items[0].type.slice(1)}
+						{header[0].toUpperCase() + header.slice(1)}
 						<ExpandMore
 							className={classes.icon}
 							style={{
@@ -99,21 +112,53 @@ export const ResourceLink = ({ items }) => {
 			<HoverMenu
 				{...bindMenu(popupState)}
 				getContentAnchorEl={null}
-				// PopoverClasses={{
-				// 	paper: classes.popoverPaper,
-				// }}
+				PopoverClasses={{
+					paper: classes.popoverPaper,
+				}}
 				TransitionComponent={Fade}
 				TransitionProps={{ timeout: 2 }}
 				anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
 				transformOrigin={{ vertical: 'top', horizontal: 'left' }}>
-				{items.map((item, index) => (
-					<a
-						href={item.slug.current}
-						target='_blank'
-						className={classes.subLink}>
-						<MenuItem key={index}>{item.title}</MenuItem>
-					</a>
-				))}
+				<Container fixed>
+					{' '}
+					{
+						{
+							industries: (
+								<IndustryNavContent
+									links={links}
+									calloutIcon={calloutIcon}
+									calloutTitle={calloutTitle}
+									calloutContent={calloutContent}
+								/>
+							),
+							products: (
+								<ProductNavContent
+									links={links}
+									calloutIcon={calloutIcon}
+									calloutTitle={calloutTitle}
+									calloutContent={calloutContent}
+								/>
+							),
+							company: (
+								<NoHeadersNavContent
+									links={links}
+									calloutIcon={calloutIcon}
+									calloutTitle={calloutTitle}
+									calloutContent={calloutContent}
+								/>
+							),
+							sales: (
+								<SalesNavContent links={links} contentHeader={contentHeader} />
+							),
+							support: (
+								<SupportNavContent
+									links={links}
+									contentHeader={contentHeader}
+								/>
+							),
+						}[header]
+					}
+				</Container>
 			</HoverMenu>
 		</div>
 	);

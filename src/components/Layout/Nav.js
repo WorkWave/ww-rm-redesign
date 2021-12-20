@@ -9,9 +9,7 @@ import { ResourceBar } from './NavPieces/ResourceBar';
 import { Navbar } from './NavPieces/Navbar';
 
 export const Nav = () => {
-	//calculates navbarheight for each element
-
-	const { nav } = useStaticQuery(graphql`
+	const { nav, homeNav } = useStaticQuery(graphql`
 		{
 			nav: sanityRouteManagerNav {
 				title
@@ -20,40 +18,6 @@ export const Nav = () => {
 					_rawContent
 				}
 				resourceBar {
-					productLinks {
-						type
-						title
-						slug {
-							current
-						}
-					}
-					companyLinks {
-						type
-						title
-						slug {
-							current
-						}
-					}
-					salesLinks {
-						type
-						title
-						slug {
-							current
-						}
-					}
-					supportLinks {
-						type
-						title
-						slug {
-							current
-						}
-					}
-					partnerNavLink {
-						title
-						slug {
-							current
-						}
-					}
 					mktplcLink
 				}
 				wwNavLogo {
@@ -128,6 +92,64 @@ export const Nav = () => {
 				}
 				ctaText
 			}
+			homeNav: sanityNav {
+				productLinks {
+					title
+					type
+					mainName
+					secondaryName
+					category
+					description
+					slug {
+						current
+					}
+				}
+				productCalloutIcon
+				productCalloutTitle
+				_rawProductCalloutContent
+				companyLinks {
+					title
+					type
+					faIcon
+					name
+					slug {
+						current
+					}
+				}
+				companyCalloutIcon
+				companyCalloutTitle
+				_rawCompanyCalloutContent
+				salesMobileFaIcon
+				salesHeader
+				salesLinks {
+					title
+					type
+					faIcon
+					name
+					description
+					slug {
+						current
+					}
+				}
+				supportMobileFaIcon
+				supportHeader
+				supportLinks {
+					title
+					type
+					faIcon
+					name
+					description
+					slug {
+						current
+					}
+				}
+				partnerNavLink {
+					title
+					slug {
+						current
+					}
+				}
+			}
 		}
 	`);
 
@@ -138,13 +160,8 @@ export const Nav = () => {
 			{!med && (
 				<ResourceBar
 					mktplcLink={nav.resourceBar.mktplcLink}
-					sales={nav.resourceBar.salesNumber}
-					service={nav.resourceBar.serviceNumber}
-					product={nav.resourceBar.productLinks}
-					company={nav.resourceBar.companyLinks}
-					sales={nav.resourceBar.salesLinks}
-					support={nav.resourceBar.supportLinks}
-					partner={nav.resourceBar.partnerNavLink}
+					nav={homeNav}
+					partner={homeNav.partnerNavLink}
 				/>
 			)}
 

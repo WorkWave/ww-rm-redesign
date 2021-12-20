@@ -24,16 +24,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export const ResourceBar = ({
-	mktplcLink,
-	product,
-	company,
-	sales,
-	support,
-	partner,
-}) => {
+export const ResourceBar = ({ mktplcLink, nav, partner }) => {
 	const classes = useStyles();
 	const sm = useMediaQuery('(max-width: 630px)');
+
+	console.log(nav.salesHeader, nav.supportHeader);
 
 	return (
 		<div className={classes.bar}>
@@ -43,10 +38,30 @@ export const ResourceBar = ({
 					direction={sm ? 'column' : 'row'}
 					justifyContent={sm ? 'center' : 'flex-end'}
 					alignItems='center'>
-					<ResourceLink items={product} />
-					<ResourceLink items={company} />
-					<ResourceLink items={sales} />
-					<ResourceLink items={support} />
+					<ResourceLink
+						header={nav.productLinks[0].type}
+						links={nav.productLinks}
+						calloutIcon={nav.productCalloutIcon}
+						calloutTitle={nav.productCalloutTitle}
+						calloutContent={nav._rawProductCalloutContent}
+					/>
+					<ResourceLink
+						header={nav.companyLinks[0].type}
+						links={nav.companyLinks}
+						calloutIcon={nav.companyCalloutIcon}
+						calloutTitle={nav.companyCalloutTitle}
+						calloutContent={nav._rawCompanyCalloutContent}
+					/>
+					<ResourceLink
+						header={nav.salesLinks[0].type}
+						contentHeader={nav.salesHeader}
+						links={nav.salesLinks}
+					/>
+					<ResourceLink
+						header={nav.supportLinks[0].type}
+						contentHeader={nav.supportHeader}
+						links={nav.supportLinks}
+					/>
 					<a
 						href={partner?.slug?.current}
 						target='_blank'
