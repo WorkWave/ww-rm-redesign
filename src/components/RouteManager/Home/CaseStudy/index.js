@@ -52,7 +52,7 @@ export const CaseStudy = () => {
 			}
 		}
 	`);
-	console.log(caseStudy);
+
 	return (
 		<Grid container className={classes.container} direction='row' spacing={2}>
 			<Grid
